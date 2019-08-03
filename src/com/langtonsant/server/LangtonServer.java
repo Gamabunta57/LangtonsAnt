@@ -31,6 +31,8 @@ public class LangtonServer {
      * @param port the port number to listen to (must be between 1 and 65535)
      */
     public LangtonServer(int port){
+        if(port < 1|| port > 65535) throw new IllegalArgumentException("The port must be set between 0 and 65535");
+
         this.port = port;
         this.HandleExchange = httpExchange -> {
             int iteration = parseIterationFromHttpExchange(httpExchange);
