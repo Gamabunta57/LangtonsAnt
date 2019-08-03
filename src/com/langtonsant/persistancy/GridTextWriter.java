@@ -33,8 +33,11 @@ public final class GridTextWriter extends GridWriter{
         writer.close();
     }
 
-    private char getCellMatchingChar(ICell cell){
-        switch(cell.getCellType()){
+    /**
+     * Get a character to write according to the cell type
+     * @param cellType
+     * @return an arbitrary char depending on the cell type
+     */
             case Black:
                 return '+';
             case White:

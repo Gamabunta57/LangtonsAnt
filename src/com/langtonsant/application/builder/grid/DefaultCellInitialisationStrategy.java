@@ -3,6 +3,10 @@ package com.langtonsant.application.builder.grid;
 import com.langtonsant.application.element.cell.ICell;
 import com.langtonsant.math.Vector2;
 
+/**
+ * This is the default grid generation behaviour
+ * Every generated cells are the default cells
+ */
 public class DefaultCellInitialisationStrategy implements ICellInitialisationStrategy {
 
     private int width;
@@ -12,6 +16,12 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
     private ICell defaultCell;
     private Vector2 lastOffset;
 
+    /**
+     * Initialize the strategy with the base size of the grid and the default cell to use.
+     * @param width base width of the grid to generate
+     * @param height base height of the grid to generate
+     * @param defaultCell default cell to initialize the grid with
+     */
     public DefaultCellInitialisationStrategy(int width, int height, ICell defaultCell){
         if(width < 1) throw new IllegalArgumentException("The width of the grid must be a strict positive integer");
         if(height < 1) throw new IllegalArgumentException("The height of the grid must be a strict positive integer");
@@ -72,6 +82,7 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
         return newCells;
     }
 
+    @Override
     public Vector2 getLastOffset(){
         return this.lastOffset;
     }

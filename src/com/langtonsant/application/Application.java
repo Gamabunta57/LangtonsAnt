@@ -8,24 +8,31 @@ import com.langtonsant.server.IRequestListener;
 
 import java.io.IOException;
 
+/**
+ * This handles the standard Langton's ant algorithm
+ */
 public class Application implements IApplication, IRequestListener {
 
     private IMachine machine;
     private IGrid grid;
     private String outputFilePath;
 
+    @Override
     public void setGrid(IGrid grid){
         this.grid = grid;
     }
 
+    @Override
     public void setMachine(IMachine machine){
         this.machine = machine;
     }
 
+    @Override
     public void setOutputFilePath(String outputFilePath){
         this.outputFilePath = outputFilePath;
     }
 
+    @Override
     public void run(int iterationCount){
         try {
             while (iterationCount-- > 0)
@@ -50,6 +57,9 @@ public class Application implements IApplication, IRequestListener {
     }
 
     private void registerGrid() {
+    /**
+     * Try to save the grid into the file
+     */
         try {
             GridTextWriter writer = new GridTextWriter(grid);
             writer.writeIntoFile(outputFilePath);
@@ -58,6 +68,11 @@ public class Application implements IApplication, IRequestListener {
         }
     }
 
+    /**
+     * Run one step of the Langton's algorithm
+     *
+     * It the machine get "outside" the grid, it expands the grid and replace the machine onto the matching new grid coordinates.
+     */
     private void runOneStep(){
         Vector2 currentMachinePosition = this.machine.getPosition();
         Vector2 machineHeading = this.machine.getHeading();
