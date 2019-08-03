@@ -37,10 +37,11 @@ class Main{
         IGrid grid = new Grid();
         grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10,10, firstCellInChain));
 
+        String outputFilePath = System.getProperty("user.home")+"/langton_ant_grid_result.txt";
         Application app = new Application();
         app.setGrid(grid);
         app.setMachine(MachineFactory.getMachine());
-        app.setOutputFilePath("/Users/slo/test.txt");
+        app.setOutputFilePath(outputFilePath);
 
         LangtonServer server = new LangtonServer( 8080);
         server.addListener(app);

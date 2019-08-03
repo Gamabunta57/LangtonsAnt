@@ -75,7 +75,7 @@ public class LangtonServer {
      */
     private void runApplication(int iteration){
         for(IRequestListener listener : requestListeners)
-            listener.OnGoodRequestReceived(iteration);
+            listener.OnValidRequestReceived(iteration);
     }
 
     /**

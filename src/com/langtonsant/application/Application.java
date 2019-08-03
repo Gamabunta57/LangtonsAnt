@@ -38,7 +38,7 @@ public class Application implements IApplication, IRequestListener {
             while (iterationCount-- > 0)
                 runOneStep();
 
-            registerGrid();
+            tryRegisterGrid();
         }catch (Exception exception){
             System.out.println(exception);
         }
@@ -51,15 +51,16 @@ public class Application implements IApplication, IRequestListener {
     }
 
     @Override
-    public void OnGoodRequestReceived(int iterationCount) {
+    public void OnValidRequestReceived(int iterationCount) {
         reset();
         run(iterationCount);
     }
 
-    private void registerGrid() {
+
     /**
      * Try to save the grid into the file
      */
+    private void tryRegisterGrid() {
         try {
             GridTextWriter writer = new GridTextWriter(grid);
             writer.writeIntoFile(outputFilePath);
