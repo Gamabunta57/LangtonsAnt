@@ -1,4 +1,4 @@
-# What is this ?
+# What is this?
 
 This is a test I've been asked to do for a job interview.
 The subject was :
@@ -106,7 +106,7 @@ I realized later that I could easily make a way more abstracted builder. Indeed,
 
 I use a Strategy Design Pattern to be able to set a way to create the cell array. It is meant to manage the complexity of the memory allocation of the grid and how the grid cells are first initialised. I used the Strategy DP to be able later to have different initial conditions for the grid. We can for example have a grid that is initialized with random cells instead of white.
 
-# Some personnal toughts to go farther
+# Some personal thoughts to go farther
 
 I refrain myself to get farther, I could, but imo I reached an acceptable state to discuss about it in an interview (at least I hope ^^). Here is some idea I have right now on what can be improved :
 -  CellLoopBuilder could be more generic to handle chainable objects instead of only cells
