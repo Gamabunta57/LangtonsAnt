@@ -1,19 +1,15 @@
 package com.langtonsant.persistancy;
-import com.langtonsant.application.element.cell.ICell;
+import com.langtonsant.application.element.cell.CellType;
 import com.langtonsant.application.element.grid.IGrid;
 import com.langtonsant.math.Vector2;
 
 import java.io.*;
 
-public final class GridTextWriter extends GridWriter{
-
-    public GridTextWriter(IGrid grid){
-        super(grid);
-    }
+public final class GridTextWriter implements IGridWriter{
 
     @Override
-    public void writeIntoFile(String fileName) throws IOException {
-        File file = new File(fileName);
+    public void writeIntoFile(IGrid grid, String filePath) throws IOException {
+        File file = new File(filePath);
         if(!file.exists() && !file.createNewFile()) throw new IOException("The output file couldn't be created.");
 
         FileWriter writer = new FileWriter(file);
@@ -26,7 +22,7 @@ public final class GridTextWriter extends GridWriter{
             positionInGrid.y = y;
             for (int x = 0; x < gridWidth; x++) {
                 positionInGrid.x = x;
-                writer.write(this.getCellMatchingChar(grid.getCellAt(x,y)));
+                writer.write(this.getCellMatchingChar(grid.getCellAt(x,y).getCellType()));
             }
             writer.write(System.lineSeparator());
         }
@@ -38,6 +34,8 @@ public final class GridTextWriter extends GridWriter{
      * @param cellType
      * @return an arbitrary char depending on the cell type
      */
+    private char getCellMatchingChar(CellType cellType){
+        switch(cellType){
             case Black:
                 return '+';
             case White:

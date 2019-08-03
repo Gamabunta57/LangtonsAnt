@@ -62,8 +62,8 @@ public class Application implements IApplication, IRequestListener {
      */
     private void tryRegisterGrid() {
         try {
-            GridTextWriter writer = new GridTextWriter(grid);
-            writer.writeIntoFile(outputFilePath);
+            GridTextWriter writer = new GridTextWriter();
+            writer.writeIntoFile(grid, outputFilePath);
         }catch (IOException exception){
             System.out.println(exception.getMessage());
         }
