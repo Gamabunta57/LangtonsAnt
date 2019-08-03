@@ -88,7 +88,7 @@ public class LangtonServer {
      */
     private void sendResponse(HttpExchange httpExchange, int code, String message) throws IOException {
         byte[] data = message.getBytes();
-        httpExchange.sendResponseHeaders(500, data.length);
+        httpExchange.sendResponseHeaders(code, data.length);
         OutputStream os = httpExchange.getResponseBody();
         os.write(data);
         os.close();
