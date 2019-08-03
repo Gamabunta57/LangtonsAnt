@@ -67,7 +67,7 @@ public class LangtonServer {
         HttpContext context = server.createContext("/");
         context.setHandler(HandleExchange);
         server.start();
-        System.out.println("Server start");
+        System.out.println("Server start on port: "+port);
     }
 
     /**
