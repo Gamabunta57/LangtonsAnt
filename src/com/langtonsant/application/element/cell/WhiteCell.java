@@ -5,6 +5,7 @@ import com.langtonsant.math.Vector2;
 public class WhiteCell extends Cell {
 
     /**
+     * {@inheritDoc}
      * Apply a 90 degrees clockwise rotation
      *
      * @param vectorToRotate the base vector to compute the rotation

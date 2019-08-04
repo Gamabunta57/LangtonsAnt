@@ -38,7 +38,7 @@ public interface IApplication {
     /**
      * Defines the grid writer
      *
-     * @param gridWriter
+     * @param gridWriter The gridWriter to use for saving the resulting grid
      */
     void setGridWriter(IGridWriter gridWriter);
 }
