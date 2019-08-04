@@ -5,11 +5,19 @@ import com.langtonsant.persistancy.IGridWriter;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.activation.MimetypesFileTypeMap;
-import java.io.IOException;
 
+/**
+ * This class is a factory that gives us a IGridWriter made for registering a IGrid into a file
+ */
 public class GridWriterFactory {
 
-    public static IGridWriter getGridWriter(String outputPath) throws IOException {
+    /**
+     * Returns a IGridWriter depending on the detected mimetype of the given path
+     *
+     * @param outputPath the path to write the output file. It is also used to determine the mimetype and the IGridWriter to construct
+     * @return The IGridWriter that match the mimetype detected
+     */
+    public static IGridWriter getGridWriter(String outputPath) {
 
         MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
         String mimeType = mimeTypesMap.getContentType(outputPath);
