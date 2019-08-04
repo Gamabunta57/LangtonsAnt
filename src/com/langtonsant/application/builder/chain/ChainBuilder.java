@@ -11,7 +11,7 @@ public class ChainBuilder<T extends IChainable> {
     private List<T> chainableElementList;
 
     public ChainBuilder() {
-        this.chainableElementList = new ArrayList<>();
+        chainableElementList = new ArrayList<>();
     }
 
     /**
@@ -21,7 +21,7 @@ public class ChainBuilder<T extends IChainable> {
      * @return this
      */
     public ChainBuilder add(T chainableElement) {
-        this.chainableElementList.add(chainableElement);
+        chainableElementList.add(chainableElement);
         return this;
     }
 
@@ -34,14 +34,14 @@ public class ChainBuilder<T extends IChainable> {
         if (chainableElementList.isEmpty())
             throw new RuntimeException("Can't build a chain without any elements on it");
 
-        T firstCell = this.chainableElementList.get(0);
+        T firstCell = chainableElementList.get(0);
 
-        int size = this.chainableElementList.size();
+        int size = chainableElementList.size();
         for (int i = 0; i < size - 1; i++) {
-            this.chainableElementList.get(i).setNext(this.chainableElementList.get(i + 1));
+            chainableElementList.get(i).setNext(chainableElementList.get(i + 1));
         }
 
-        this.chainableElementList.get(size - 1).setNext(firstCell);
+        chainableElementList.get(size - 1).setNext(firstCell);
 
         return firstCell;
     }

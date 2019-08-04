@@ -28,18 +28,18 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
         if (height < 1) throw new IllegalArgumentException("The height of the grid must be a strict positive integer");
         if (defaultCell == null) throw new IllegalArgumentException("The default cell can't be null");
 
+        lastOffset = new Vector2();
+        baseWidth = width;
+        baseHeight = height;
         this.width = width;
         this.height = height;
-        this.baseWidth = width;
-        this.baseHeight = height;
         this.defaultCell = defaultCell;
-        lastOffset = new Vector2();
     }
 
     @Override
     public void reset() {
-        this.width = baseWidth;
-        this.height = baseHeight;
+        width = baseWidth;
+        height = baseHeight;
     }
 
     @Override
@@ -47,8 +47,9 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
         int count = width * height;
         ICell[] cells = new ICell[count];
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++) {
             cells[i] = defaultCell;
+        }
 
         return cells;
     }
@@ -85,6 +86,6 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
 
     @Override
     public Vector2 getLastOffset() {
-        return this.lastOffset;
+        return lastOffset;
     }
 }

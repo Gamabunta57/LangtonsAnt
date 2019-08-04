@@ -41,7 +41,7 @@ public class Vector2 {
      * @param vectorToAdd the other vector to add
      */
     public void add(Vector2 vectorToAdd) {
-        this.x += vectorToAdd.x;
-        this.y += vectorToAdd.y;
+        x += vectorToAdd.x;
+        y += vectorToAdd.y;
     }
 }

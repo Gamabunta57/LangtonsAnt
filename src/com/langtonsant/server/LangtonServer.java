@@ -33,7 +33,7 @@ public class LangtonServer {
         if (port < 1 || port > 65535) throw new IllegalArgumentException("The port must be set between 0 and 65535");
 
         this.port = port;
-        this.HandleExchange = httpExchange -> {
+        HandleExchange = httpExchange -> {
             int iteration = parseIterationFromHttpExchange(httpExchange);
             if (!isExchangeValid(httpExchange, iteration)) {
                 System.out.println("Bad request received");
@@ -87,7 +87,7 @@ public class LangtonServer {
      * @throws IOException
      */
     public void start() throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(this.port), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         HttpContext context = server.createContext("/");
         context.setHandler(HandleExchange);
         server.start();
@@ -100,8 +100,9 @@ public class LangtonServer {
      * @param iteration the number of iteration to run the Langton's ant program
      */
     private void runApplication(int iteration) {
-        for (IRequestListener listener : requestListeners)
-            listener.OnValidRequestReceived(iteration);
+        for (IRequestListener listener : requestListeners) {
+            listener.onValidRequestReceived(iteration);
+        }
     }
 
     /**

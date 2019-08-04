@@ -7,5 +7,5 @@ public interface IRequestListener {
      *
      * @param iteration the number of iteration to run the Langton's ant
      */
-    void OnValidRequestReceived(int iteration);
+    void onValidRequestReceived(int iteration);
 }
