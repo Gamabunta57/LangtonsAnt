@@ -7,6 +7,7 @@ import com.langtonsant.application.element.cell.ICell;
 import com.langtonsant.application.element.grid.Grid;
 import com.langtonsant.application.element.grid.IGrid;
 import com.langtonsant.factories.CellFactory;
+import com.langtonsant.factories.GridWriterFactory;
 import com.langtonsant.factories.MachineFactory;
 import com.langtonsant.server.LangtonServer;
 
@@ -39,11 +40,12 @@ class Main{
         IGrid grid = new Grid();
         grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10,10, firstCellInChain));
 
-        String outputFilePath = System.getProperty("user.home")+"/langton_ant_grid_result.txt";
+        String outputPath = System.getProperty("user.home")+"/langton_ant_grid_result.txt";
+
         Application app = new Application();
         app.setGrid(grid);
         app.setMachine(MachineFactory.getMachine());
-        app.setOutputFilePath(outputFilePath);
+        app.setGridWriter(GridWriterFactory.getGridWriter(outputPath));
 
         LangtonServer server = new LangtonServer( 8080);
         server.addListener(app);

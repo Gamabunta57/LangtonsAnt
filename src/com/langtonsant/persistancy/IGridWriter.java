@@ -10,11 +10,10 @@ import java.io.IOException;
 public interface IGridWriter {
 
     /**
-     * Register a grid into the file.
+     * Register a grid.
      *
      * @param grid the grid to register
-     * @param filePath a valid filepath to where to save the result
      * @throws IOException throw and IOException if the file can't be created
      */
-    void writeIntoFile(IGrid grid, String filePath) throws IOException;
+    void writeGrid(IGrid grid) throws IOException;
 }
