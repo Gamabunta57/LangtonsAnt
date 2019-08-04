@@ -6,9 +6,7 @@ import com.langtonsant.math.Vector2;
 import com.langtonsant.persistancy.IGridWriter;
 import com.langtonsant.server.IRequestListener;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * This handles the standard Langton's ant algorithm

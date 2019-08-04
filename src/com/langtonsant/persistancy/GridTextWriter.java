@@ -5,10 +5,19 @@ import com.langtonsant.math.Vector2;
 
 import java.io.*;
 
+/**
+ * This class manage the output of a given IGrid into a .txt file
+ *
+ */
 public class GridTextWriter implements IGridWriter{
 
     private String outputPath;
 
+    /**
+     * Constructor
+     *
+     * @param outputPath a valid path where to write the file
+     */
     public GridTextWriter(String outputPath){
         this.outputPath = outputPath;
     }
