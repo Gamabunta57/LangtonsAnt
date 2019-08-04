@@ -10,7 +10,7 @@ public class ChainBuilder<T extends IChainable> {
 
     private List<T> chainableElementList;
 
-    public <T>ChainBuilder(){
+    public ChainBuilder(){
         this.chainableElementList = new ArrayList<>();
     }
 
