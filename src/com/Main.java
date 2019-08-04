@@ -1,4 +1,5 @@
 package com;
+
 import com.langtonsant.application.Application;
 import com.langtonsant.application.builder.chain.ChainBuilder;
 import com.langtonsant.application.builder.grid.DefaultCellInitialisationStrategy;
@@ -31,7 +32,7 @@ class Main{
 
         ChainBuilder<ICell> cellChainBuilder = new ChainBuilder<>();
 
-        //the need for a cast here is weird as the builder as been set to builder a ICell builder. May be there's another way
+        //the need for a cast here is weird as the builder as been set to be a ICell builder. May be there's another way
         ICell firstCellInChain = (ICell)cellChainBuilder
                 .add(CellFactory.getCell(CellType.White))
                 .add(CellFactory.getCell(CellType.Black))
