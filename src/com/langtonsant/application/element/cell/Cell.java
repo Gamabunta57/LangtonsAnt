@@ -7,12 +7,12 @@ public abstract class Cell implements ICell {
     private ICell nextCell;
 
     @Override
-    public ICell next(){
+    public ICell next() {
         return nextCell;
     }
 
     @Override
-    public void setNext(IChainable nextCell){
+    public void setNext(IChainable nextCell) {
         this.nextCell = (ICell) nextCell;
     }
 }

@@ -26,9 +26,9 @@ public class Grid implements IGrid {
     @Override
     public boolean isValidPosition(Vector2 positionInGrid) {
         return positionInGrid.x > -1
-            && positionInGrid.y > -1
-            && positionInGrid.x < width
-            && positionInGrid.y < height;
+                && positionInGrid.y > -1
+                && positionInGrid.x < width
+                && positionInGrid.y < height;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Grid implements IGrid {
     @Override
     public Vector2 sizeGridUp() {
         cells = initialisationStrategy.doubleGridSize(cells);
-        width *=2;
-        height *=2;
+        width *= 2;
+        height *= 2;
         return initialisationStrategy.getLastOffset();
     }
 
@@ -58,12 +58,12 @@ public class Grid implements IGrid {
     }
 
     @Override
-    public void setCellAt(Vector2 position, ICell cell){
+    public void setCellAt(Vector2 position, ICell cell) {
         this.cells[position.y * this.width + position.x] = cell;
     }
 
     @Override
-    public ICell getCellAt(Vector2 position){
+    public ICell getCellAt(Vector2 position) {
         return this.getCellAt(position.x, position.y);
     }
 

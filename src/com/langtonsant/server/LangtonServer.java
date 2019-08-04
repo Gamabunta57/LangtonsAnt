@@ -15,7 +15,6 @@ import java.util.List;
  * This class is a wrapper of a HttpServer.
  * It launch a server and handle the request.
  * If a valid request is received an event is called in order to launch the main program.
- *
  */
 public class LangtonServer {
 
@@ -30,17 +29,17 @@ public class LangtonServer {
      *
      * @param port the port number to listen to (must be between 1 and 65535)
      */
-    public LangtonServer(int port){
-        if(port < 1|| port > 65535) throw new IllegalArgumentException("The port must be set between 0 and 65535");
+    public LangtonServer(int port) {
+        if (port < 1 || port > 65535) throw new IllegalArgumentException("The port must be set between 0 and 65535");
 
         this.port = port;
         this.HandleExchange = httpExchange -> {
             int iteration = parseIterationFromHttpExchange(httpExchange);
-            if(!isExchangeValid(httpExchange, iteration)){
+            if (!isExchangeValid(httpExchange, iteration)) {
                 System.out.println("Bad request received");
                 sendFailResponse(httpExchange);
                 return;
-            };
+            }
 
             System.out.println("Request received : " + iteration);
             runApplication(iteration);
@@ -49,11 +48,36 @@ public class LangtonServer {
     }
 
     /**
+     * Parse the parameter "n" to get the number of iteration
+     *
+     * @param httpExchange
+     * @return the "n" parameter of the request or 0 if it's not valid
+     */
+    private static int parseIterationFromHttpExchange(HttpExchange httpExchange) {
+        String[] parameters = httpExchange.getRequestURI().getQuery().split("&");
+        for (String parameter : parameters) {
+            String[] keyValuePair = parameter.split("=");
+            int length = keyValuePair.length;
+            String key = length > 0 ? keyValuePair[0] : "";
+            String value = length > 1 ? keyValuePair[1] : "";
+
+            if (key.equals("n")) {
+                return Integer.parseInt(value, 10);
+            }
+        }
+        return 0;
+    }
+
+    private static boolean isExchangeValid(HttpExchange httpExchange, int iteration) {
+        return httpExchange.getRequestMethod().equals(PUT_METHOD) && iteration > 0;
+    }
+
+    /**
      * Attach a listener to the "OnValidRequestReceived"
      *
      * @param listener
      */
-    public void addListener(IRequestListener listener){
+    public void addListener(IRequestListener listener) {
         requestListeners.add(listener);
     }
 
@@ -63,11 +87,11 @@ public class LangtonServer {
      * @throws IOException
      */
     public void start() throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(this.port),0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(this.port), 0);
         HttpContext context = server.createContext("/");
         context.setHandler(HandleExchange);
         server.start();
-        System.out.println("Server start on port: "+port);
+        System.out.println("Server start on port: " + port);
     }
 
     /**
@@ -75,8 +99,8 @@ public class LangtonServer {
      *
      * @param iteration the number of iteration to run the Langton's ant program
      */
-    private void runApplication(int iteration){
-        for(IRequestListener listener : requestListeners)
+    private void runApplication(int iteration) {
+        for (IRequestListener listener : requestListeners)
             listener.OnValidRequestReceived(iteration);
     }
 
@@ -84,8 +108,8 @@ public class LangtonServer {
      * Send a HTTP response to the client
      *
      * @param httpExchange
-     * @param code HTTP status code
-     * @param message Body content of the HTTP response
+     * @param code         HTTP status code
+     * @param message      Body content of the HTTP response
      * @throws IOException
      */
     private void sendResponse(HttpExchange httpExchange, int code, String message) throws IOException {
@@ -103,7 +127,7 @@ public class LangtonServer {
      * @throws IOException
      */
     private void sendFailResponse(HttpExchange httpExchange) throws IOException {
-       sendResponse(httpExchange, 500,"Fail");
+        sendResponse(httpExchange, 500, "Fail");
     }
 
     /**
@@ -113,30 +137,6 @@ public class LangtonServer {
      * @throws IOException
      */
     private void sendSuccessResponse(HttpExchange httpExchange) throws IOException {
-        sendResponse(httpExchange, 200,"Success");
-    }
-
-    /**
-     * Parse the parameter "n" to get the number of iteration
-     *
-     * @param httpExchange
-     * @return the "n" parameter of the request or 0 if it's not valid
-     */
-    private static int parseIterationFromHttpExchange(HttpExchange httpExchange){
-        String[] parameters = httpExchange.getRequestURI().getQuery().split("&");
-        for (String parameter : parameters) {
-            String[] keyValuePair = parameter.split("=");
-            int length = keyValuePair.length;
-            String key = length > 0 ? keyValuePair[0] : "";
-            String value = length > 1 ? keyValuePair[1] : "";
-
-            if (key.equals("n"))
-                return Integer.parseInt(value, 10);
-        }
-        return 0;
-    }
-
-    private static boolean isExchangeValid(HttpExchange httpExchange, int iteration) {
-        return httpExchange.getRequestMethod().equals(PUT_METHOD) && iteration > 0;
+        sendResponse(httpExchange, 200, "Success");
     }
 }

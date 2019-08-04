@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Class entry point
  */
-class Main{
+class Main {
 
     /**
      * Here's the entry point of the entire program.
@@ -33,22 +33,22 @@ class Main{
         ChainBuilder<ICell> cellChainBuilder = new ChainBuilder<>();
 
         //the need for a cast here is weird as the builder as been set to be a ICell builder. May be there's another way
-        ICell firstCellInChain = (ICell)cellChainBuilder
+        ICell firstCellInChain = (ICell) cellChainBuilder
                 .add(CellFactory.getCell(CellType.White))
                 .add(CellFactory.getCell(CellType.Black))
                 .build();
 
         IGrid grid = new Grid();
-        grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10,10, firstCellInChain));
+        grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10, 10, firstCellInChain));
 
-        String outputPath = System.getProperty("user.home")+"/langton_ant_grid_result.txt";
+        String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.txt";
 
         Application app = new Application();
         app.setGrid(grid);
         app.setMachine(MachineFactory.getMachine());
         app.setGridWriter(GridWriterFactory.getGridWriter(outputPath));
 
-        LangtonServer server = new LangtonServer( 8080);
+        LangtonServer server = new LangtonServer(8080);
         server.addListener(app);
 
         server.start();

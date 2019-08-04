@@ -6,6 +6,7 @@ public class WhiteCell extends Cell {
 
     /**
      * Apply a 90 degrees clockwise rotation
+     *
      * @param vectorToRotate the base vector to compute the rotation
      * @return a new vector rotated 90 degrees clockwise
      */

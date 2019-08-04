@@ -1,7 +1,7 @@
 package com.langtonsant.application;
 
-import com.langtonsant.application.element.grid.IGrid;
 import com.langtonsant.application.element.ant.IMachine;
+import com.langtonsant.application.element.grid.IGrid;
 import com.langtonsant.math.Vector2;
 import com.langtonsant.persistancy.IGridWriter;
 import com.langtonsant.server.IRequestListener;
@@ -18,12 +18,12 @@ public class Application implements IApplication, IRequestListener {
     private IGridWriter gridWriter;
 
     @Override
-    public void setGrid(IGrid grid){
+    public void setGrid(IGrid grid) {
         this.grid = grid;
     }
 
     @Override
-    public void setMachine(IMachine machine){
+    public void setMachine(IMachine machine) {
         this.machine = machine;
     }
 
@@ -33,13 +33,13 @@ public class Application implements IApplication, IRequestListener {
     }
 
     @Override
-    public void run(int iterationCount){
+    public void run(int iterationCount) {
         try {
             while (iterationCount-- > 0)
                 runOneStep();
 
             tryRegisterGrid();
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception);
         }
     }
@@ -61,21 +61,20 @@ public class Application implements IApplication, IRequestListener {
      * Try to save the grid into the file
      */
     private void tryRegisterGrid() {
-        if(null == gridWriter) return;
+        if (null == gridWriter) return;
 
         try {
             gridWriter.writeGrid(grid);
-        }catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
     /**
      * Run one step of the Langton's algorithm
-     *
      * It the machine get "outside" the grid, it expands the grid and replace the machine onto the matching new grid coordinates.
      */
-    private void runOneStep(){
+    private void runOneStep() {
         Vector2 currentMachinePosition = this.machine.getPosition();
         Vector2 machineHeading = this.machine.getHeading();
 
@@ -83,7 +82,7 @@ public class Application implements IApplication, IRequestListener {
         this.grid.cycleCellAt(currentMachinePosition);
         this.machine.move();
 
-        if(!this.grid.isValidPosition(this.machine.getPosition())) {
+        if (!this.grid.isValidPosition(this.machine.getPosition())) {
             Vector2 resizeOffset = grid.sizeGridUp();
             machine.getPosition().add(resizeOffset);
         }

@@ -22,8 +22,9 @@ public class GridWriterFactory {
         MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
         String mimeType = mimeTypesMap.getContentType(outputPath);
 
-        if(mimeType.equals("text/plain"))
+        if (mimeType.equals("text/plain")) {
             return new GridTextWriter(outputPath);
+        }
 
         throw new NotImplementedException();
     }

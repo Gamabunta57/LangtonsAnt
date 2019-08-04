@@ -41,7 +41,7 @@ public interface IMachine {
     /**
      * Reset the position of the machine into the grid according the grid size.
      *
-     * @param width grid width
+     * @param width  grid width
      * @param height grid height
      */
     void resetOnGrid(int width, int height);
