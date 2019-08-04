@@ -37,7 +37,7 @@ public class GridTextWriter implements IGridWriter {
             positionInGrid.y = y;
             for (int x = 0; x < gridWidth; x++) {
                 positionInGrid.x = x;
-                os.write(this.getCellMatchingChar(grid.getCellAt(x, y).getCellType()));
+                os.write(getCellMatchingChar(grid.getCellAt(x, y).getCellType()));
             }
             os.write(System.lineSeparator().getBytes());
         }

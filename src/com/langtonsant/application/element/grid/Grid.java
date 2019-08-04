@@ -49,31 +49,31 @@ public class Grid implements IGrid {
 
     @Override
     public int getWidth() {
-        return this.width;
+        return width;
     }
 
     @Override
     public int getHeight() {
-        return this.height;
+        return height;
     }
 
     @Override
     public void setCellAt(Vector2 position, ICell cell) {
-        this.cells[position.y * this.width + position.x] = cell;
+        cells[position.y * width + position.x] = cell;
     }
 
     @Override
     public ICell getCellAt(Vector2 position) {
-        return this.getCellAt(position.x, position.y);
+        return getCellAt(position.x, position.y);
     }
 
     @Override
     public ICell getCellAt(int x, int y) {
-        return this.cells[x + y * this.width];
+        return cells[x + y * width];
     }
 
     @Override
     public void setInitialisationStrategy(ICellInitialisationStrategy strategy) {
-        this.initialisationStrategy = strategy;
+        initialisationStrategy = strategy;
     }
 }

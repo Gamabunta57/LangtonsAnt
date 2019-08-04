@@ -9,7 +9,7 @@ public class Machine implements IMachine {
 
     @Override
     public Vector2 getPosition() {
-        return this.position;
+        return position;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class Machine implements IMachine {
 
     @Override
     public Vector2 getHeading() {
-        return this.heading;
+        return heading;
     }
 
     @Override

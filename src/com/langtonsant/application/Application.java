@@ -35,12 +35,13 @@ public class Application implements IApplication, IRequestListener {
     @Override
     public void run(int iterationCount) {
         try {
-            while (iterationCount-- > 0)
+            while (iterationCount-- > 0) {
                 runOneStep();
+            }
 
             tryRegisterGrid();
         } catch (Exception exception) {
-            System.out.println(exception);
+            System.out.println(exception.toString());
         }
     }
 
@@ -51,7 +52,7 @@ public class Application implements IApplication, IRequestListener {
     }
 
     @Override
-    public void OnValidRequestReceived(int iterationCount) {
+    public void onValidRequestReceived(int iterationCount) {
         reset();
         run(iterationCount);
     }
@@ -75,14 +76,14 @@ public class Application implements IApplication, IRequestListener {
      * It the machine get "outside" the grid, it expands the grid and replace the machine onto the matching new grid coordinates.
      */
     private void runOneStep() {
-        Vector2 currentMachinePosition = this.machine.getPosition();
-        Vector2 machineHeading = this.machine.getHeading();
+        Vector2 currentMachinePosition = machine.getPosition();
+        Vector2 machineHeading = machine.getHeading();
 
-        this.machine.setHeading(this.grid.computeNewHeadingFrom(currentMachinePosition, machineHeading));
-        this.grid.cycleCellAt(currentMachinePosition);
-        this.machine.move();
+        machine.setHeading(grid.computeNewHeadingFrom(currentMachinePosition, machineHeading));
+        grid.cycleCellAt(currentMachinePosition);
+        machine.move();
 
-        if (!this.grid.isValidPosition(this.machine.getPosition())) {
+        if (grid.isValidPosition(machine.getPosition())) {
             Vector2 resizeOffset = grid.sizeGridUp();
             machine.getPosition().add(resizeOffset);
         }
