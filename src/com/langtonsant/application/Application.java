@@ -3,10 +3,12 @@ package com.langtonsant.application;
 import com.langtonsant.application.element.grid.IGrid;
 import com.langtonsant.application.element.ant.IMachine;
 import com.langtonsant.math.Vector2;
-import com.langtonsant.persistancy.GridTextWriter;
+import com.langtonsant.persistancy.IGridWriter;
 import com.langtonsant.server.IRequestListener;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * This handles the standard Langton's ant algorithm
@@ -15,7 +17,7 @@ public class Application implements IApplication, IRequestListener {
 
     private IMachine machine;
     private IGrid grid;
-    private String outputFilePath;
+    private IGridWriter gridWriter;
 
     @Override
     public void setGrid(IGrid grid){
@@ -28,8 +30,8 @@ public class Application implements IApplication, IRequestListener {
     }
 
     @Override
-    public void setOutputFilePath(String outputFilePath){
-        this.outputFilePath = outputFilePath;
+    public void setGridWriter(IGridWriter gridWriter) {
+        this.gridWriter = gridWriter;
     }
 
     @Override
@@ -61,9 +63,10 @@ public class Application implements IApplication, IRequestListener {
      * Try to save the grid into the file
      */
     private void tryRegisterGrid() {
+        if(null == gridWriter) return;
+
         try {
-            GridTextWriter writer = new GridTextWriter();
-            writer.writeIntoFile(grid, outputFilePath);
+            gridWriter.writeGrid(grid);
         }catch (IOException exception){
             System.out.println(exception.getMessage());
         }

@@ -2,6 +2,7 @@ package com.langtonsant.application;
 
 import com.langtonsant.application.element.ant.IMachine;
 import com.langtonsant.application.element.grid.IGrid;
+import com.langtonsant.persistancy.IGridWriter;
 
 /**
  * Contract to define a standard Application
@@ -35,9 +36,9 @@ public interface IApplication {
     void setMachine(IMachine machine);
 
     /**
-     * Defines the output to save the resulting grid
+     * Defines the grid writer
      *
-     * @param filePath a valid filePath where to save the grid
+     * @param gridWriter
      */
-    void setOutputFilePath(String filePath);
+    void setGridWriter(IGridWriter gridWriter);
 }
