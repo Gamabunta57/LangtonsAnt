@@ -40,7 +40,7 @@ public interface IGrid {
      * Set the cell at the coordinates in the grid
      *
      * @param position the target coordinates
-     * @param cell the cell to set
+     * @param cell     the cell to set
      */
     void setCellAt(Vector2 position, ICell cell);
 
@@ -53,14 +53,16 @@ public interface IGrid {
 
     /**
      * Compute a new direction based on a given position in the grid and a given direction
+     *
      * @param positionInGrid the given position from which to compute the new heading
-     * @param headingVector the base heading vector from which to compute the new heading
+     * @param headingVector  the base heading vector from which to compute the new heading
      * @return the computed new direction
      */
     Vector2 computeNewHeadingFrom(Vector2 positionInGrid, Vector2 headingVector);
 
     /**
      * Transform the cell at a given position with the next cell
+     *
      * @param positionInGrid
      */
     void cycleCellAt(Vector2 positionInGrid);

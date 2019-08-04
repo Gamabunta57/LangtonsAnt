@@ -1,7 +1,7 @@
 package com.langtonsant.factories;
 
-import com.langtonsant.application.element.ant.Machine;
 import com.langtonsant.application.element.ant.IMachine;
+import com.langtonsant.application.element.ant.Machine;
 
 /**
  * A simple factory to create machines
@@ -14,7 +14,7 @@ public class MachineFactory {
      *
      * @return a new machine
      */
-    public static IMachine getMachine(){
+    public static IMachine getMachine() {
         return new Machine();
     }
 }

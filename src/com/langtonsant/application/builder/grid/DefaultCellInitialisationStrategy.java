@@ -18,14 +18,15 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
 
     /**
      * Initialize the strategy with the base size of the grid and the default cell to use.
-     * @param width base width of the grid to generate
-     * @param height base height of the grid to generate
+     *
+     * @param width       base width of the grid to generate
+     * @param height      base height of the grid to generate
      * @param defaultCell default cell to initialize the grid with
      */
-    public DefaultCellInitialisationStrategy(int width, int height, ICell defaultCell){
-        if(width < 1) throw new IllegalArgumentException("The width of the grid must be a strict positive integer");
-        if(height < 1) throw new IllegalArgumentException("The height of the grid must be a strict positive integer");
-        if(defaultCell == null) throw new IllegalArgumentException("The default cell can't be null");
+    public DefaultCellInitialisationStrategy(int width, int height, ICell defaultCell) {
+        if (width < 1) throw new IllegalArgumentException("The width of the grid must be a strict positive integer");
+        if (height < 1) throw new IllegalArgumentException("The height of the grid must be a strict positive integer");
+        if (defaultCell == null) throw new IllegalArgumentException("The default cell can't be null");
 
         this.width = width;
         this.height = height;
@@ -46,7 +47,7 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
         int count = width * height;
         ICell[] cells = new ICell[count];
 
-        for(int i = 0 ; i < count; i++)
+        for (int i = 0; i < count; i++)
             cells[i] = defaultCell;
 
         return cells;
@@ -66,16 +67,16 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
     public ICell[] doubleGridSize(ICell[] baseGrid) {
         int oldWidth = width;
         int oldHeight = height;
-        lastOffset = new Vector2(oldWidth / 2,oldHeight / 2);
+        lastOffset = new Vector2(oldWidth / 2, oldHeight / 2);
 
         width *= 2;
         height *= 2;
 
         ICell[] newCells = getNewGrid();
 
-        for(int y = 0; y < oldHeight; y++){
-            for(int x = 0; x < oldWidth;x++){
-                newCells[(y + lastOffset.y) * width + x + lastOffset.x ] = baseGrid[y *oldWidth + x];
+        for (int y = 0; y < oldHeight; y++) {
+            for (int x = 0; x < oldWidth; x++) {
+                newCells[(y + lastOffset.y) * width + x + lastOffset.x] = baseGrid[y * oldWidth + x];
             }
         }
 
@@ -83,7 +84,7 @@ public class DefaultCellInitialisationStrategy implements ICellInitialisationStr
     }
 
     @Override
-    public Vector2 getLastOffset(){
+    public Vector2 getLastOffset() {
         return this.lastOffset;
     }
 }

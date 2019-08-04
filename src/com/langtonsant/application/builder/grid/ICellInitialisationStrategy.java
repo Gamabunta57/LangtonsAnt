@@ -20,6 +20,7 @@ public interface ICellInitialisationStrategy {
 
     /**
      * When grid is resize, a "shift" of the old grid occurs. This give the latest "shifting" amount that occurs
+     *
      * @return the last "shift" of the coordinates that occurs.
      */
     Vector2 getLastOffset();
@@ -31,6 +32,7 @@ public interface ICellInitialisationStrategy {
 
     /**
      * Generate a new set of cell.
+     *
      * @return the new generated cells
      */
     ICell[] getNewGrid();
