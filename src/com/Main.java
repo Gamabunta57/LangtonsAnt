@@ -1,11 +1,12 @@
 package com;
 import com.langtonsant.application.Application;
-import com.langtonsant.application.builder.cellloop.CellLoopBuilder;
+import com.langtonsant.application.builder.chain.ChainBuilder;
 import com.langtonsant.application.builder.grid.DefaultCellInitialisationStrategy;
 import com.langtonsant.application.element.cell.CellType;
 import com.langtonsant.application.element.cell.ICell;
 import com.langtonsant.application.element.grid.Grid;
 import com.langtonsant.application.element.grid.IGrid;
+import com.langtonsant.factories.CellFactory;
 import com.langtonsant.factories.MachineFactory;
 import com.langtonsant.server.LangtonServer;
 
@@ -27,11 +28,12 @@ class Main{
      */
     public static void main(String[] args) throws IOException {
 
-        CellLoopBuilder cellLoopBuilder = new CellLoopBuilder();
+        ChainBuilder<ICell> cellChainBuilder = new ChainBuilder<>();
 
-        ICell firstCellInChain = cellLoopBuilder
-                .addCell(CellType.White)
-                .addCell(CellType.Black)
+        //the need for a cast here is weird as the builder as been set to builder a ICell builder. May be there's another way
+        ICell firstCellInChain = (ICell)cellChainBuilder
+                .add(CellFactory.getCell(CellType.White))
+                .add(CellFactory.getCell(CellType.Black))
                 .build();
 
         IGrid grid = new Grid();
