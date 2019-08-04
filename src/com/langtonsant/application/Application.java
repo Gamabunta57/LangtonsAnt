@@ -34,6 +34,9 @@ public class Application implements IApplication, IRequestListener {
 
     @Override
     public void run(int iterationCount) {
+        if (null == machine) throw new RuntimeException("The machine is not defined, can't run the process");
+        if (null == grid) throw new RuntimeException("The grid is not defined, can't run the process");
+
         try {
             while (iterationCount-- > 0) {
                 runOneStep();
