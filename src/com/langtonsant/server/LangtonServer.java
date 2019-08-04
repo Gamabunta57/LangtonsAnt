@@ -75,7 +75,7 @@ public class LangtonServer {
     /**
      * Attach a listener to the "OnValidRequestReceived"
      *
-     * @param listener
+     * @param listener the listener to add
      */
     public void addListener(IRequestListener listener) {
         requestListeners.add(listener);
@@ -84,7 +84,7 @@ public class LangtonServer {
     /**
      * Starts a HttpServer
      *
-     * @throws IOException
+     * @throws IOException Throw an IOException if the server can't start
      */
     public void start() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);

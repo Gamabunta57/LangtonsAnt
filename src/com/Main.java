@@ -27,6 +27,7 @@ class Main {
      * Otherwise a "Fail" response is given and nothing happens.
      *
      * @param args program arguments (not used yet)
+     * @throws IOException can throw an IOException if the server can't be launched
      */
     public static void main(String[] args) throws IOException {
 

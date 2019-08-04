@@ -63,7 +63,7 @@ public interface IGrid {
     /**
      * Transform the cell at a given position with the next cell
      *
-     * @param positionInGrid
+     * @param positionInGrid the coordinates in the grid
      */
     void cycleCellAt(Vector2 positionInGrid);
 
