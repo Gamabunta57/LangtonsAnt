@@ -26,6 +26,8 @@ A request for 500 iterations could be:
 
 The server should answer you a "Success" (with status 200) if everything is ok or "Fail" (with status 500) if something was wrong.
 
+Then you can check the result on your user folder in the file `langton_ant_grid_result.txt`.
+
 # My choices 
 
 ## The language
