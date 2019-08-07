@@ -33,7 +33,7 @@ class Main {
 
         ChainBuilder<ICell> cellChainBuilder = new ChainBuilder<>();
 
-        //the need for a cast here is weird as the builder as been set to be a ICell builder. May be there's another way
+        //the need for a cast here is because of the type-erasing in Java
         ICell firstCellInChain = (ICell) cellChainBuilder
                 .add(CellFactory.getCell(CellType.White))
                 .add(CellFactory.getCell(CellType.Black))
