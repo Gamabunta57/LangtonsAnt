@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * This helps to build a closed chain
  */
-public class ChainBuilder<T extends IChainable> {
+public final class ChainBuilder<T extends IChainable> {
 
-    private List<T> chainableElementList;
+    private final List<T> chainableElementList;
 
     public ChainBuilder() {
         chainableElementList = new ArrayList<>();

@@ -16,13 +16,13 @@ import java.util.List;
  * It launch a server and handle the request.
  * If a valid request is received an event is called in order to launch the main program.
  */
-public class LangtonServer {
+public final class LangtonServer {
 
     private static final String PUT_METHOD = "PUT";
 
     private int port;
     private HttpHandler HandleExchange;
-    private List<IRequestListener> requestListeners = new ArrayList<>();
+    private final List<IRequestListener> requestListeners = new ArrayList<>();
 
     /**
      * Constructor
@@ -50,7 +50,7 @@ public class LangtonServer {
     /**
      * Parse the parameter "n" to get the number of iteration
      *
-     * @param httpExchange
+     * @param httpExchange the HTTP Exchange to parse the request from
      * @return the "n" parameter of the request or 0 if it's not valid
      */
     private static int parseIterationFromHttpExchange(HttpExchange httpExchange) {
@@ -108,10 +108,10 @@ public class LangtonServer {
     /**
      * Send a HTTP response to the client
      *
-     * @param httpExchange
+     * @param httpExchange the HTTP Exchange to send the response from
      * @param code         HTTP status code
      * @param message      Body content of the HTTP response
-     * @throws IOException
+     * @throws IOException send a IOException if the output stream of the HTTP response can't be used
      */
     private void sendResponse(HttpExchange httpExchange, int code, String message) throws IOException {
         byte[] data = message.getBytes();
@@ -124,8 +124,8 @@ public class LangtonServer {
     /**
      * Send a "Fail" message with a status code 500
      *
-     * @param httpExchange
-     * @throws IOException
+     * @param httpExchange  the HTTP Exchange to send the response from
+     * @throws IOException send a IOException if the output stream of the HTTP response can't be used
      */
     private void sendFailResponse(HttpExchange httpExchange) throws IOException {
         sendResponse(httpExchange, 500, "Fail");
@@ -134,8 +134,8 @@ public class LangtonServer {
     /**
      * Send a "Success" message with a status code 200
      *
-     * @param httpExchange
-     * @throws IOException
+     * @param httpExchange  the HTTP Exchange to send the response from
+     * @throws IOException send a IOException if the output stream of the HTTP response can't be used
      */
     private void sendSuccessResponse(HttpExchange httpExchange) throws IOException {
         sendResponse(httpExchange, 200, "Success");

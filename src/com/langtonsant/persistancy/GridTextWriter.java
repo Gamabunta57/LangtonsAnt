@@ -11,9 +11,9 @@ import java.io.OutputStream;
 /**
  * This class manage the output of a given IGrid into a .txt file
  */
-public class GridTextWriter implements IGridWriter {
+public final class GridTextWriter implements IGridWriter {
 
-    private String outputPath;
+    private final String outputPath;
 
     /**
      * Constructor
@@ -47,7 +47,7 @@ public class GridTextWriter implements IGridWriter {
     /**
      * Get a character to write according to the cell type
      *
-     * @param cellType
+     * @param cellType the type of cell from which we define the character
      * @return an arbitrary char depending on the cell type
      */
     private char getCellMatchingChar(CellType cellType) {
