@@ -68,6 +68,12 @@ public final class LangtonServer {
         return 0;
     }
 
+    /**
+     * Check the given HttpExchange if it's a valid one. It is valid if it use a PUT HTTP verb
+     * @param httpExchange The HttpExchange to check
+     * @param iteration the number of iteration set in the HttpExchange
+     * @return true if the HttpExchange use a PUT verb and if iteration is greater than 0
+     */
     private static boolean isExchangeValid(HttpExchange httpExchange, int iteration) {
         return httpExchange.getRequestMethod().equals(PUT_METHOD) && iteration > 0;
     }

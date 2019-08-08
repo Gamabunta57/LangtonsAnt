@@ -28,7 +28,7 @@ public final class ChainBuilder<T extends IChainable> {
     /**
      * Build the closed chain
      *
-     * @return the "first" element of the chain (the first added with adds).
+     * @return the "first" element of the chain (the first added with add() ).
      */
     public T build() {
         if (chainableElementList.isEmpty())

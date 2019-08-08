@@ -18,7 +18,7 @@ public final class GridTextWriter implements IGridWriter {
     /**
      * Constructor
      *
-     * @param outputPath a valid path where to write the file
+     * @param outputPath a valid path where to write the TXT file
      */
     public GridTextWriter(String outputPath) {
         this.outputPath = outputPath;
