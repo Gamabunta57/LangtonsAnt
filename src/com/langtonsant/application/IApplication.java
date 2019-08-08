@@ -7,7 +7,7 @@ import com.langtonsant.server.IRequestListener;
  * Contract to define a standard Application
  * This holds the main algorithm to apply
  */
-public interface IApplication {
+public interface IApplication extends IRequestListener {
     /**
      * Run the algorithm and iterate it "iterationCount" times
      *

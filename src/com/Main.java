@@ -1,6 +1,7 @@
 package com;
 
 import com.langtonsant.application.Application;
+import com.langtonsant.application.IApplication;
 import com.langtonsant.application.builder.chain.ChainBuilder;
 import com.langtonsant.application.builder.grid.DefaultCellInitialisationStrategy;
 import com.langtonsant.application.element.cell.CellType;
@@ -44,7 +45,7 @@ class Main {
 
         String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.txt";
 
-        Application app = new Application();
+        IApplication app = new Application(grid, MachineFactory.getMachine());
         app.setGridWriter(GridWriterFactory.getGridWriter(outputPath));
 
         LangtonServer server = new LangtonServer(8080);
