@@ -43,7 +43,7 @@ class Main {
         IGrid grid = new Grid();
         grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10, 10, firstCellInChain));
 
-        String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.txt";
+        String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.png";
 
         IApplication app = new Application(grid, MachineFactory.getMachine());
         app.setGridWriter(GridWriterFactory.getGridWriter(outputPath));
