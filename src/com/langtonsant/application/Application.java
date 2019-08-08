@@ -17,6 +17,11 @@ public class Application implements IApplication, IRequestListener {
     private IGrid grid;
     private IGridWriter gridWriter;
 
+    /**
+     *
+     * @param grid A valid (non null) IGrid on where to run the algorithm
+     * @param machine A valid (non null) IMachine to walk the grid
+     */
     public Application(IGrid grid, IMachine machine){
         setGrid(grid);
         setMachine(machine);
@@ -81,7 +86,7 @@ public class Application implements IApplication, IRequestListener {
         grid.cycleCellAt(currentMachinePosition);
         machine.move();
 
-        if (grid.isValidPosition(machine.getPosition())) {
+        if (!grid.isValidPosition(machine.getPosition())) {
             Vector2 resizeOffset = grid.sizeGridUp();
             machine.getPosition().add(resizeOffset);
         }
