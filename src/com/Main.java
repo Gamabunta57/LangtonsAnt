@@ -45,8 +45,6 @@ class Main {
         String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.txt";
 
         Application app = new Application();
-        app.setGrid(grid);
-        app.setMachine(MachineFactory.getMachine());
         app.setGridWriter(GridWriterFactory.getGridWriter(outputPath));
 
         LangtonServer server = new LangtonServer(8080);

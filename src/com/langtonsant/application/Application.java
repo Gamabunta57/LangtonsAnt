@@ -17,14 +17,9 @@ public class Application implements IApplication, IRequestListener {
     private IGrid grid;
     private IGridWriter gridWriter;
 
-    @Override
-    public void setGrid(IGrid grid) {
-        this.grid = grid;
-    }
-
-    @Override
-    public void setMachine(IMachine machine) {
-        this.machine = machine;
+    public Application(IGrid grid, IMachine machine){
+        setGrid(grid);
+        setMachine(machine);
     }
 
     @Override
@@ -90,5 +85,26 @@ public class Application implements IApplication, IRequestListener {
             Vector2 resizeOffset = grid.sizeGridUp();
             machine.getPosition().add(resizeOffset);
         }
+    }
+
+    /**
+     * Defines the grid on which to run the algorithm
+     *
+     * @param grid the grid on which to run the algorithm
+     */
+    private void setGrid(IGrid grid) {
+        if(null == grid) throw new IllegalArgumentException("The grid can't be null");
+        this.grid = grid;
+    }
+
+
+    /**
+     * Defines the machine that walks the grid
+     *
+     * @param machine the machine to walk the grid
+     */
+    private void setMachine(IMachine machine) {
+        if(null == machine) throw new IllegalArgumentException("The machine can't be null");
+        this.machine = machine;
     }
 }
