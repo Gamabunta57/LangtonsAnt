@@ -30,13 +30,12 @@ public class GridPNGWriter implements IGridWriter {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D graphic = image.createGraphics();
-        graphic.clearRect(0,0,width, height);
 
         for(int y = 0; y < height;y++){
             for(int x = 0; x < width; x++){
                 Color c = GetColorFromCellType(grid.getCellAt(x,y).getCellType());
                 graphic.setColor(c);
-                graphic.drawRect(x,y,0,0);
+                graphic.drawRect(x,y,1,1);
             }
         }
 
