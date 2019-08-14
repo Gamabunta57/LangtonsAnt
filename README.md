@@ -82,10 +82,6 @@ To be honest, I'm not convinced by the `resetOnGrid` method. It works, but I thi
 Well, it's very simple and feels kind of useless for the moment. I did that because I thought we could have fun by using another machine with different behaviours later.
 I would pass a machine type as argument to select the one we want.
 
-### The cell factory (com.langtonsant.factories.CellFactory)
-
-It's a simple factory where we passe a cell type and it gives us a cell of that type. The advantage I see here is that we can make a loose coupling with classes that use cells.
-
 ### The grid writer (com.langtonsant.persitancy.GridTextWriter)
 
 It manages the output into the file. The format wasn't mentioned in the test. So I chose a text version which is in my opinion the simplest approach.
