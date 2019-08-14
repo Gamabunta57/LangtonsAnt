@@ -33,8 +33,8 @@ public class Machine implements IMachine {
     }
 
     @Override
-    public void resetOnGrid(int width, int height) {
+    public void reset() {
         setHeading(Vector2.right());
-        setPosition(new Vector2(width / 2, height / 2));
+        setPosition(Vector2.zero());
     }
 }

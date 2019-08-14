@@ -39,10 +39,7 @@ public interface IMachine {
     void move();
 
     /**
-     * Reset the position of the machine into the grid according the grid size.
-     *
-     * @param width  grid width
-     * @param height grid height
+     * Reset the position of the machine to Vector(0,0) and the heading to the right Vector(1,0)
      */
-    void resetOnGrid(int width, int height);
+    void reset();
 }

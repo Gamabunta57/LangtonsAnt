@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * This handles the standard Langton's ant algorithm
  */
-public class Application implements IApplication, IRequestListener {
+public class Application implements IApplication, IRequestListener{
 
     private IMachine machine;
     private IGrid grid;
@@ -51,7 +51,7 @@ public class Application implements IApplication, IRequestListener {
     @Override
     public void reset() {
         grid.reset();
-        machine.resetOnGrid(grid.getWidth(), grid.getHeight());
+        machine.reset();
     }
 
     @Override
@@ -85,11 +85,6 @@ public class Application implements IApplication, IRequestListener {
         machine.setHeading(grid.computeNewHeadingFrom(currentMachinePosition, machineHeading));
         grid.cycleCellAt(currentMachinePosition);
         machine.move();
-
-        if (!grid.isValidPosition(machine.getPosition())) {
-            Vector2 resizeOffset = grid.sizeGridUp();
-            machine.getPosition().add(resizeOffset);
-        }
     }
 
     /**

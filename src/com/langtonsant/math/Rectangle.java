@@ -12,8 +12,8 @@ public class Rectangle {
 
     /**
      *
-     * @param x     the x coordinates of the rectangle (must be a positive integer)
-     * @param y     the y coordinates of the rectangle (must be a positive integer)
+     * @param x     the x coordinates of the rectangle
+     * @param y     the y coordinates of the rectangle
      * @param width the width of the rectangle (must be a positive integer)
      * @param height the height of the rectangle (must be a positive integer)
      */
@@ -54,21 +54,17 @@ public class Rectangle {
 
     /**
      * Set the x coordinates of the rectangle
-     * @param x the x coordinates of the rectangle (must be a positive integer)
+     * @param x the x coordinates of the rectangle
      */
     private void setX(int x){
-        if(x < 0) throw new IllegalArgumentException(String.format("X must be positive %s given", x));
-
         this.x = x;
     }
 
     /**
      * Set the y coordinates of the rectangle
-     * @param y the y coordinates of the rectangle (must be a positive integer)
+     * @param y the y coordinates of the rectangle
      */
     private void setY(int y){
-        if(y < 0) throw new IllegalArgumentException(String.format("X must be positive %s given", y));
-
         this.y = y;
     }
 

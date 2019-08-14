@@ -2,13 +2,8 @@ package com;
 
 import com.langtonsant.application.Application;
 import com.langtonsant.application.IApplication;
-import com.langtonsant.application.builder.chain.ChainBuilder;
-import com.langtonsant.application.builder.grid.DefaultCellInitialisationStrategy;
-import com.langtonsant.application.element.cell.CellType;
-import com.langtonsant.application.element.cell.ICell;
-import com.langtonsant.application.element.grid.Grid;
 import com.langtonsant.application.element.grid.IGrid;
-import com.langtonsant.factories.CellFactory;
+import com.langtonsant.application.element.grid.InfiniteGrid;
 import com.langtonsant.factories.GridWriterFactory;
 import com.langtonsant.factories.MachineFactory;
 import com.langtonsant.server.LangtonServer;
@@ -32,16 +27,7 @@ class Main {
      */
     public static void main(String[] args) throws IOException {
 
-        ChainBuilder<ICell> cellChainBuilder = new ChainBuilder<>();
-
-        //the need for a cast here is because of the type-erasing in Java
-        ICell firstCellInChain = (ICell) cellChainBuilder
-                .add(CellFactory.getCell(CellType.White))
-                .add(CellFactory.getCell(CellType.Black))
-                .build();
-
-        IGrid grid = new Grid();
-        grid.setInitialisationStrategy(new DefaultCellInitialisationStrategy(10, 10, firstCellInChain));
+        IGrid grid = new InfiniteGrid();
 
         String outputPath = System.getProperty("user.home") + "/langton_ant_grid_result.png";
 
