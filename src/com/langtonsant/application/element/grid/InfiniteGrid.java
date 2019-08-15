@@ -46,7 +46,7 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
         }else {
             blackCells.add(new Vector2(positionInGrid));
         }
-        setBorderArea(positionInGrid);
+        updateBorderArea(positionInGrid);
     }
 
     @Override
@@ -67,6 +67,7 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
     }
 
     private void setBorderArea(Vector2 position){
+    private void updateBorderArea(Vector2 position){
         if(position.x > maxCoordinates.x)
             maxCoordinates.x = position.x;
         if(position.y > maxCoordinates.y)
