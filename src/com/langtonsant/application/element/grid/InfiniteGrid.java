@@ -66,6 +66,12 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
         return new Rectangle(minCoordinates.x,minCoordinates.y, getWidth(), getHeight());
     }
 
+    /**
+     * Update the borders of the grid.
+     * It the given position is outside the current defined border, the border is "extended" to match the new area
+     *
+     * @param position the position to check
+     */
     private void updateBorderArea(Vector2 position){
         if(position.x > maxCoordinates.x)
             maxCoordinates.x = position.x;

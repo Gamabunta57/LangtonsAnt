@@ -64,14 +64,26 @@ public class Vector2 {
         y += vectorToAdd.y;
     }
 
+    /**
+     * @return a new Vector2 with components initialized with the maximum value available (Integer.MAX_VALUE)
+     */
     public static Vector2 maxAvailable(){
         return new Vector2(Integer.MAX_VALUE,Integer.MAX_VALUE);
     }
 
+    /**
+     * @return a new Vector2 with components initialized with the minimum value available (Integer.MIN_VALUE)
+     */
     public static Vector2 minAvailable(){
         return new Vector2(Integer.MIN_VALUE,Integer.MIN_VALUE);
     }
 
+    /**
+     * Check if this Vector is equal to other
+     *
+     * @param other must be a Vector2 to be compared with
+     * @return returns true if components are equals false otherwise or if other is not a Vector2
+     */
     @Override
     public boolean equals(Object other){
         if(!(other instanceof Vector2))
@@ -81,6 +93,10 @@ public class Vector2 {
         return x == b.x && y == b.y;
     }
 
+    /**
+     * Defines a hashcode based on components
+     * @return the hashcode computed from the component values
+     */
     @Override
     public int hashCode() {
         return (Integer.toString(x) + ":" + Integer.toString(y)).hashCode();
