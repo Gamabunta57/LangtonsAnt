@@ -1,6 +1,7 @@
 package com.langtonsant.persistancy;
 
 import com.langtonsant.application.element.grid.IGrid;
+import com.langtonsant.math.Rectangle;
 import com.langtonsant.math.Vector2;
 
 import java.io.FileOutputStream;
@@ -30,12 +31,14 @@ public final class GridTextWriter implements IGridWriter {
 
         int gridHeight = grid.getHeight();
         int gridWidth = grid.getWidth();
+        Rectangle croppedArea = grid.GetArea();
 
+        Vector2 offsetStart = new Vector2(croppedArea.getX(),croppedArea.getY());
         Vector2 positionInGrid = new Vector2();
         for (int y = 0; y < gridHeight; y++) {
-            positionInGrid.y = y;
+            positionInGrid.y = y + offsetStart.y;
             for (int x = 0; x < gridWidth; x++) {
-                positionInGrid.x = x;
+                positionInGrid.x = x + offsetStart.x;
                 os.write(grid.hasCellAt(positionInGrid) ? '+' : '.');
             }
             os.write(System.lineSeparator().getBytes());
