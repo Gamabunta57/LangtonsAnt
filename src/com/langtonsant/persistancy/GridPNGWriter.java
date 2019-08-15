@@ -19,7 +19,7 @@ public class GridPNGWriter implements IGridWriter {
      *
      * @param outputPath a valid path where to write the PNG file
      */
-    public GridPNGWriter(String outputPath){
+    public GridPNGWriter(String outputPath) {
         this.outputPath = outputPath;
     }
 
@@ -32,12 +32,12 @@ public class GridPNGWriter implements IGridWriter {
         Graphics2D graphic = image.createGraphics();
 
         graphic.setColor(Color.WHITE);
-        graphic.fillRect(0,0,croppedZone.getWidth() * cellPixelSize, croppedZone.getHeight() * cellPixelSize);
+        graphic.fillRect(0, 0, croppedZone.getWidth() * cellPixelSize, croppedZone.getHeight() * cellPixelSize);
 
         graphic.setColor(Color.BLACK);
         graphic.setBackground(Color.BLACK);
         for (Vector2 position : grid) {
-            graphic.fillRect((position.x - croppedZone.getX()) * cellPixelSize, (position.y  - croppedZone.getY())* cellPixelSize, cellPixelSize, cellPixelSize);
+            graphic.fillRect((position.x - croppedZone.getX()) * cellPixelSize, (position.y - croppedZone.getY()) * cellPixelSize, cellPixelSize, cellPixelSize);
         }
 
         graphic.dispose();

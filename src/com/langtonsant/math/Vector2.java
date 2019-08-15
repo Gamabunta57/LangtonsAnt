@@ -30,7 +30,7 @@ public class Vector2 {
      *
      * @param vector2 vector2 to copy from
      */
-    public Vector2(Vector2 vector2){
+    public Vector2(Vector2 vector2) {
         this.x = vector2.x;
         this.y = vector2.y;
     }
@@ -41,7 +41,7 @@ public class Vector2 {
      * @return Vector2(0, 0);
      */
     public static Vector2 zero() {
-        return new Vector2(0,0);
+        return new Vector2(0, 0);
     }
 
     /**
@@ -51,6 +51,20 @@ public class Vector2 {
      */
     public static Vector2 right() {
         return new Vector2(1, 0);
+    }
+
+    /**
+     * @return a new Vector2 with components initialized with the maximum value available (Integer.MAX_VALUE)
+     */
+    public static Vector2 maxAvailable() {
+        return new Vector2(Integer.MAX_VALUE, Integer.MAX_VALUE);
+    }
+
+    /**
+     * @return a new Vector2 with components initialized with the minimum value available (Integer.MIN_VALUE)
+     */
+    public static Vector2 minAvailable() {
+        return new Vector2(Integer.MIN_VALUE, Integer.MIN_VALUE);
     }
 
     /**
@@ -65,36 +79,23 @@ public class Vector2 {
     }
 
     /**
-     * @return a new Vector2 with components initialized with the maximum value available (Integer.MAX_VALUE)
-     */
-    public static Vector2 maxAvailable(){
-        return new Vector2(Integer.MAX_VALUE,Integer.MAX_VALUE);
-    }
-
-    /**
-     * @return a new Vector2 with components initialized with the minimum value available (Integer.MIN_VALUE)
-     */
-    public static Vector2 minAvailable(){
-        return new Vector2(Integer.MIN_VALUE,Integer.MIN_VALUE);
-    }
-
-    /**
      * Check if this Vector is equal to other
      *
      * @param other must be a Vector2 to be compared with
      * @return returns true if components are equals false otherwise or if other is not a Vector2
      */
     @Override
-    public boolean equals(Object other){
-        if(!(other instanceof Vector2))
+    public boolean equals(Object other) {
+        if (!(other instanceof Vector2))
             return false;
 
-        Vector2 b = (Vector2)other;
+        Vector2 b = (Vector2) other;
         return x == b.x && y == b.y;
     }
 
     /**
      * Defines a hashcode based on components
+     *
      * @return the hashcode computed from the component values
      */
     @Override

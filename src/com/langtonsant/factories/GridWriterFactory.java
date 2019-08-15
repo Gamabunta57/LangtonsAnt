@@ -24,7 +24,7 @@ public class GridWriterFactory {
 
         if (mimeType.equals(MimeType.TEXT)) {
             return new GridTextWriter(outputPath);
-        }else if (mimeType.equals(MimeType.PNG)){
+        } else if (mimeType.equals(MimeType.PNG)) {
             return new GridPNGWriter(outputPath);
         }
 
@@ -36,17 +36,17 @@ public class GridWriterFactory {
      *
      * @return an initialized MimeTypesFileTypeMap with all the supported mime types
      */
-    private static MimetypesFileTypeMap GetMimeTypesMap(){
+    private static MimetypesFileTypeMap GetMimeTypesMap() {
         MimetypesFileTypeMap mime = new MimetypesFileTypeMap();
         mime.addMimeTypes(MimeType.TEXT);
-        mime.addMimeTypes(MimeType.PNG+ " png");
+        mime.addMimeTypes(MimeType.PNG + " png");
         return mime;
     }
 
     /**
      * Defines all supported mime types
      */
-    private static final class MimeType{
+    private static final class MimeType {
         static final String TEXT = "text/plain";
         static final String PNG = "image/png";
     }

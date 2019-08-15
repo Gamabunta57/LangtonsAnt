@@ -11,13 +11,12 @@ public class Rectangle {
     private int height;
 
     /**
-     *
-     * @param x     the x coordinates of the rectangle
-     * @param y     the y coordinates of the rectangle
-     * @param width the width of the rectangle (must be a positive integer)
+     * @param x      the x coordinates of the rectangle
+     * @param y      the y coordinates of the rectangle
+     * @param width  the width of the rectangle (must be a positive integer)
      * @param height the height of the rectangle (must be a positive integer)
      */
-    public Rectangle(int x,int y,int width,int height){
+    public Rectangle(int x, int y, int width, int height) {
         this.setX(x);
         this.setY(y);
         this.setWidth(width);
@@ -32,10 +31,28 @@ public class Rectangle {
     }
 
     /**
+     * Set the x coordinates of the rectangle
+     *
+     * @param x the x coordinates of the rectangle
+     */
+    private void setX(int x) {
+        this.x = x;
+    }
+
+    /**
      * Get the y coordinate of the rectangle
      */
     public int getY() {
         return y;
+    }
+
+    /**
+     * Set the y coordinates of the rectangle
+     *
+     * @param y the y coordinates of the rectangle
+     */
+    private void setY(int y) {
+        this.y = y;
     }
 
     /**
@@ -46,6 +63,17 @@ public class Rectangle {
     }
 
     /**
+     * Set the width of the rectangle
+     *
+     * @param width the width of the rectangle (must be a positive integer)
+     */
+    private void setWidth(int width) {
+        if (width < 0) throw new IllegalArgumentException(String.format("Width must be positive %s given", width));
+
+        this.width = width;
+    }
+
+    /**
      * Get the height of the rectangle
      */
     public int getHeight() {
@@ -53,37 +81,12 @@ public class Rectangle {
     }
 
     /**
-     * Set the x coordinates of the rectangle
-     * @param x the x coordinates of the rectangle
-     */
-    private void setX(int x){
-        this.x = x;
-    }
-
-    /**
-     * Set the y coordinates of the rectangle
-     * @param y the y coordinates of the rectangle
-     */
-    private void setY(int y){
-        this.y = y;
-    }
-
-    /**
-     * Set the width of the rectangle
-     * @param width the width of the rectangle (must be a positive integer)
-     */
-    private void setWidth(int width){
-        if(width < 0) throw new IllegalArgumentException(String.format("Width must be positive %s given", width));
-
-        this.width = width;
-    }
-
-    /**
      * Set the height of the rectangle
+     *
      * @param height the height of the rectangle (must be a positive integer)
      */
-    private void setHeight(int height){
-        if(height < 0) throw new IllegalArgumentException(String.format("Height must be positive %s given", height));
+    private void setHeight(int height) {
+        if (height < 0) throw new IllegalArgumentException(String.format("Height must be positive %s given", height));
 
         this.height = height;
     }

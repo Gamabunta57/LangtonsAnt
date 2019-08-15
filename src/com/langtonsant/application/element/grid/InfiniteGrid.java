@@ -7,13 +7,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class InfiniteGrid implements IGrid, Iterable<Vector2>
-{
+public class InfiniteGrid implements IGrid, Iterable<Vector2> {
     private Vector2 minCoordinates;
     private Vector2 maxCoordinates;
     private Set<Vector2> blackCells;
 
-    public InfiniteGrid(){
+    public InfiniteGrid() {
         reset();
     }
 
@@ -34,16 +33,16 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
 
     @Override
     public Vector2 computeNewHeadingFrom(Vector2 positionInGrid, Vector2 headingVector) {
-        if(hasCellAt(positionInGrid))
+        if (hasCellAt(positionInGrid))
             return new Vector2(-headingVector.y, +headingVector.x);
         return new Vector2(+headingVector.y, -headingVector.x);
     }
 
     @Override
     public void cycleCellAt(Vector2 positionInGrid) {
-        if(hasCellAt(positionInGrid)) {
+        if (hasCellAt(positionInGrid)) {
             blackCells.remove(positionInGrid);
-        }else {
+        } else {
             blackCells.add(new Vector2(positionInGrid));
         }
         updateBorderArea(positionInGrid);
@@ -62,8 +61,8 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
     }
 
     @Override
-    public Rectangle GetArea(){
-        return new Rectangle(minCoordinates.x,minCoordinates.y, getWidth(), getHeight());
+    public Rectangle GetArea() {
+        return new Rectangle(minCoordinates.x, minCoordinates.y, getWidth(), getHeight());
     }
 
     /**
@@ -72,15 +71,15 @@ public class InfiniteGrid implements IGrid, Iterable<Vector2>
      *
      * @param position the position to check
      */
-    private void updateBorderArea(Vector2 position){
-        if(position.x > maxCoordinates.x)
+    private void updateBorderArea(Vector2 position) {
+        if (position.x > maxCoordinates.x)
             maxCoordinates.x = position.x;
-        if(position.y > maxCoordinates.y)
+        if (position.y > maxCoordinates.y)
             maxCoordinates.y = position.y;
 
-        if(position.x < minCoordinates.x)
+        if (position.x < minCoordinates.x)
             minCoordinates.x = position.x;
-        if(position.y < minCoordinates.y)
+        if (position.y < minCoordinates.y)
             minCoordinates.y = position.y;
     }
 }

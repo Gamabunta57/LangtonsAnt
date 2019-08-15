@@ -19,10 +19,9 @@ import java.util.List;
 public final class LangtonServer {
 
     private static final String PUT_METHOD = "PUT";
-
+    private final List<IRequestListener> requestListeners = new ArrayList<>();
     private int port;
     private HttpHandler HandleExchange;
-    private final List<IRequestListener> requestListeners = new ArrayList<>();
 
     /**
      * Constructor
@@ -70,8 +69,9 @@ public final class LangtonServer {
 
     /**
      * Check the given HttpExchange if it's a valid one. It is valid if it use a PUT HTTP verb
+     *
      * @param httpExchange The HttpExchange to check
-     * @param iteration the number of iteration set in the HttpExchange
+     * @param iteration    the number of iteration set in the HttpExchange
      * @return true if the HttpExchange use a PUT verb and if iteration is greater than 0
      */
     private static boolean isExchangeValid(HttpExchange httpExchange, int iteration) {
@@ -130,7 +130,7 @@ public final class LangtonServer {
     /**
      * Send a "Fail" message with a status code 500
      *
-     * @param httpExchange  the HTTP Exchange to send the response from
+     * @param httpExchange the HTTP Exchange to send the response from
      * @throws IOException send a IOException if the output stream of the HTTP response can't be used
      */
     private void sendFailResponse(HttpExchange httpExchange) throws IOException {
@@ -140,7 +140,7 @@ public final class LangtonServer {
     /**
      * Send a "Success" message with a status code 200
      *
-     * @param httpExchange  the HTTP Exchange to send the response from
+     * @param httpExchange the HTTP Exchange to send the response from
      * @throws IOException send a IOException if the output stream of the HTTP response can't be used
      */
     private void sendSuccessResponse(HttpExchange httpExchange) throws IOException {

@@ -11,18 +11,17 @@ import java.io.IOException;
 /**
  * This handles the standard Langton's ant algorithm
  */
-public class Application implements IApplication, IRequestListener{
+public class Application implements IApplication, IRequestListener {
 
     private IMachine machine;
     private IGrid grid;
     private IGridWriter gridWriter;
 
     /**
-     *
-     * @param grid A valid (non null) IGrid on where to run the algorithm
+     * @param grid    A valid (non null) IGrid on where to run the algorithm
      * @param machine A valid (non null) IMachine to walk the grid
      */
-    public Application(IGrid grid, IMachine machine){
+    public Application(IGrid grid, IMachine machine) {
         setGrid(grid);
         setMachine(machine);
     }
@@ -93,7 +92,7 @@ public class Application implements IApplication, IRequestListener{
      * @param grid the grid on which to run the algorithm
      */
     private void setGrid(IGrid grid) {
-        if(null == grid) throw new IllegalArgumentException("The grid can't be null");
+        if (null == grid) throw new IllegalArgumentException("The grid can't be null");
         this.grid = grid;
     }
 
@@ -104,7 +103,7 @@ public class Application implements IApplication, IRequestListener{
      * @param machine the machine to walk the grid
      */
     private void setMachine(IMachine machine) {
-        if(null == machine) throw new IllegalArgumentException("The machine can't be null");
+        if (null == machine) throw new IllegalArgumentException("The machine can't be null");
         this.machine = machine;
     }
 }
