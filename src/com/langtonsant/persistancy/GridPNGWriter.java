@@ -25,19 +25,18 @@ public class GridPNGWriter implements IGridWriter {
 
     @Override
     public void writeGrid(IGrid grid) throws IOException {
-        int cellPixelSize = 20;
         Rectangle croppedZone = grid.GetArea();
 
-        BufferedImage image = new BufferedImage(croppedZone.getWidth() * cellPixelSize, croppedZone.getHeight() * cellPixelSize, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(croppedZone.getWidth(), croppedZone.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D graphic = image.createGraphics();
 
         graphic.setColor(Color.WHITE);
-        graphic.fillRect(0, 0, croppedZone.getWidth() * cellPixelSize, croppedZone.getHeight() * cellPixelSize);
+        graphic.fillRect(0, 0, croppedZone.getWidth(), croppedZone.getHeight());
 
         graphic.setColor(Color.BLACK);
         graphic.setBackground(Color.BLACK);
         for (Vector2 position : grid) {
-            graphic.fillRect((position.x - croppedZone.getX()) * cellPixelSize, (position.y - croppedZone.getY()) * cellPixelSize, cellPixelSize, cellPixelSize);
+            graphic.fillRect((position.x - croppedZone.getX()), (position.y - croppedZone.getY()), 1, 1);
         }
 
         graphic.dispose();

@@ -33,7 +33,7 @@ public final class GridTextWriter implements IGridWriter {
         int gridWidth = grid.getWidth();
         Rectangle croppedArea = grid.GetArea();
 
-        Vector2 offsetStart = new Vector2(croppedArea.getX(),croppedArea.getY());
+        Vector2 offsetStart = new Vector2(croppedArea.getX(), croppedArea.getY());
         Vector2 positionInGrid = new Vector2();
         for (int y = 0; y < gridHeight; y++) {
             positionInGrid.y = y + offsetStart.y;
