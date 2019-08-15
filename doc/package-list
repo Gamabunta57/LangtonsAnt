@@ -1,9 +1,6 @@
 com
 com.langtonsant.application
-com.langtonsant.application.builder.chain
-com.langtonsant.application.builder.grid
 com.langtonsant.application.element.ant
-com.langtonsant.application.element.cell
 com.langtonsant.application.element.grid
 com.langtonsant.factories
 com.langtonsant.math
